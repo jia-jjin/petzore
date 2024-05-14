@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PETZORE</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mystyle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="icon" href="assets/images/logo.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $(document).ready(function () {
+        $("#filter-buttons button").click(function () {
+          const value = $(this).attr("data-filter");
+          if (value == "all") {
+            $("#filterable-cards .card ").show("100");
+          } else {
+            $("#filterable-cards .card ")
+              .not("." + value)
+              .hide("100");
+            $("#filterable-cards .card ")
+              .filter("." + value)
+              .show("100");
+          }
+          // card.style.width = 300;
+          // card.classList.add("hidden");
+          // if (
+          //   card.dataset.name === e.target.dataset.filter ||
+          //   e.target.dataset.filter === "all"
+          // ) {
+          //   // card.style.width = 500;
+          //   // card.classList.replace("hidden", "flex");
+          //   // card.classList.remove("w-[0px]");
+          //   // card.classList.add("w-[300px]");
+          //   // card.style.transform = "scale(1,1)";
+          //   // card.style.opacity = 1;
+          //   card.show("1000");
+          // } else {
+          //   // card.classList.add("w-[0px]");
+          //   // card.style.opacity = 0;
+          //   // card.style.transform = "scale(0,0)";
+          //   card.hide("1000");
+          // }
+        });
+      });
+    </script>
+  </head>
+  <body
+    class="font-[Lato] font-medium bg-green-cream-500 h-screen text-brown-cream-1000"
+  >
+    <header class="pointer-events-none fixed flex z-10 w-full h-[100px]">
+      <nav class="flex justify-between items-center w-[80%] mx-auto">
+        <div class="bg-white bg-opacity-80 rounded-md pointer-events-auto">
+          <a href="#">
+            <div class="flex items-center gap-2 p-2">
+              <img
+                class="w-14 cursor-pointer"
+                src="assets/images/logo.png"
+                alt="..."
+              />
+              <div>
+                <h1 class="text-lg font-bold leading-none">PETZORE&trade;</h1>
+                <h4 class="text-xs font-normal leading-none">
+                  Pet Encyclopedia
+                </h4>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div
+          class="pointer-events-auto nav-links duration-500 md:static absolute bg-white bg-opacity-80 rounded-md md:min-h-fit min-h-[60vh] left-0 md:w-auto w-full md:flex items-center px-5 md:opacity-100 hidden opacity-0 top-[10%]"
+        >
+          <ul
+            class="flex md:flex-row flex-col md:items-center md:gap-[4vw] gap-8 p-3"
+          >
+            <li>
+              <a
+                class="hover:text-brown-cream-800 text-yellow-800 duration-100"
+                href="#home"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a class="hover:text-brown-cream-800 duration-100" href="#pets"
+                >Pets</a
+              >
+            </li>
+            <li>
+              <a
+                class="hover:text-brown-cream-800 duration-100"
+                href="#tipsntricks"
+                >Tips & Tricks</a
+              >
+            </li>
+            <li>
+              <a class="hover:text-brown-cream-800 duration-100" href="#history"
+                >History</a
+              >
+            </li>
+            <li>
+              <a
+                class="hover:text-brown-cream-800 duration-100"
+                href="#contactus"
+                >Contact Us</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div
+          class="pointer-events-auto flex absolute right-0 items-center gap-6 me-8"
+        >
+          <ion-icon
+            onclick="onToggleMenu(this)"
+            name="menu"
+            class="text-3xl cursor-pointer md:hidden"
+          ></ion-icon>
+        </div>
+      </nav>
+    </header>
+    <section class="min-h-[85%] relative">
+      <div
+        class="w-full h-full absolute bg-black/30 flex items-center justify-center -z-[2]"
+      ></div>
+      <div>
+        <div
+          id="floater2"
+          class="flex flex-col items-center gap-2 p-2 text-white drop-shadow-2xl absolute top-1/2 left-1/2 [transform:translate(-50%,-50%)] -z-[1]"
+        >
+          <h1
+            class="md:text-9xl text-6xl font-bold leading-none flex items-start"
+          >
+            PETZORE<span class="text-3xl text-start">&trade;</span>
+          </h1>
+          <h4 class="text-3xl font-normal leading-none">Pet Encyclopedia</h4>
+        </div>
+        <img
+          src="assets/images/background.png"
+          alt=""
+          id="floater"
+          class="h-full w-full absolute -z-10 object-cover"
+        />
+      </div>
+    </section>
+    <section
+      id="home"
+      class="bg-green-cream-500 min-h-full py-[120px] relative overflow-x-clip"
+    >
+      <div
+        class="absolute bg-white -top-6 p-4 rounded-md flex justify-center xs:left-1/2 xs:-translate-x-1/2 xs:mx-0 mx-4 lg:whitespace-nowrap"
+      >
+        <h1 class="lg:text-5xl text-3xl font-bold text-center">
+          The only
+          <span
+            class="before:block before:absolute before:-inset-1 before:-skew-y-1 before:bg-green-500 relative inline-block whitespace-nowrap"
+          >
+            <span class="relative text-white">pet encyclopedia</span>
+          </span>
+
+          you'll ever need.
+        </h1>
+      </div>
+      <div
+        class="flex w-full justify-center items-center relative flex-col flex-wrap text-yellow-900 md:mt-0 mt-12"
+        id="headertext"
+      >
+        <h1 class="md:text-6xl text-3xl font-bold">Ever had any</h1>
+        <br />
+        <div
+          class="md:h-[128px] h-[48px] mx-4 w-auto overflow-hidden [mask-image:_linear-gradient(to_bottom,transparent_0,_black_16px,_black_calc(100%-16px),transparent_100%)]"
+        >
+          <ul
+            class="md:text-9xl text-5xl font-bold flex flex-col items-center animate-infinite-scroll pb-4"
+          >
+            <li>hassle</li>
+            <li>problems</li>
+            <li>worries</li>
+            <li>struggles</li>
+          </ul>
+        </div>
+        <br />
+        <h1 class="md:text-6xl text-3xl font-bold">with your pets?</h1>
+      </div>
+      <br /><br /><br /><br />
+      <div class="flex relative md:flex-row flex-col items-center">
+        <div
+          class="md:w-[40%] w-[80%] gap-12 flex flex-col md:ms-[50px] duration-500 justify-center"
+          id="home-left-text"
+        >
+          <h1 class="font-[Oswald] text-6xl md:text-start text-center">
+            Fret not, we have everything you need!
+          </h1>
+          <h1 class="text-xl md:text-start text-center">
+            From library of pets to tips & tricks on taking care of your pets,
+            we provide everything that you need to know about your pets!
+          </h1>
+          <div
+            class="flex items-center md:justify-start justify-center gap-x-2"
+          >
+            <a href="#pets">
+              <div
+                class="cursor-pointer rounded-md border-2 border-brown-cream-1000 hover:bg-cream hover:border-brown-cream-500 duration-300 flex items-center px-3 py-2 relative w-[95px] h-[40px] group overflow-hidden"
+              >
+                <button
+                  class="text-sm font-semibold focus-visible:outline left-2 text-nowrap absolute duration-300 group-hover:left-[200px]"
+                >
+                  Pets Library
+                </button>
+                <i
+                  class="fa-solid fa-forward -left-16 absolute duration-300 group-hover:left-10 group-hover:animate-wiggle-2"
+                ></i>
+              </div>
+            </a>
+            <a href="#tipsntricks">
+              <div
+                class="cursor-pointer rounded-md border-2 border-brown-cream-1000 hover:bg-cream hover:border-brown-cream-500 duration-300 flex items-center px-3 py-2 relative w-[100px] h-[40px] group overflow-hidden"
+              >
+                <button
+                  class="text-sm font-semibold focus-visible:outline left-2 text-nowrap absolute duration-300 group-hover:left-[200px]"
+                >
+                  Tips & Tricks
+                </button>
+                <i
+                  class="fa-solid fa-forward -left-16 absolute duration-300 group-hover:left-10 group-hover:animate-wiggle-2"
+                ></i>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="w-[20%]"></div>
+        <div
+          class="md:w-[40%] w-[80%] gap-12 flex flex-col md:items-end items-center md:me-[50px] md:mt-[500px] mt-[100px] duration-500"
+          id="home-right-text"
+        >
+          <h1 class="font-[Oswald] text-6xl md:text-end text-center">
+            Learn the history behind keeping pets!
+          </h1>
+          <h1 class="text-xl md:text-end text-center">
+            All pet owners are encouraged to discover the history of evolution
+            of pet ownership. You will probably be grateful and amazed on how
+            long it has came to be!
+          </h1>
+          <div class="flex items-center justify-start gap-x-2">
+            <a href="#history">
+              <div
+                class="cursor-pointer rounded-md border-2 border-brown-cream-1000 hover:bg-cream hover:border-brown-cream-500 duration-300 flex items-center px-3 py-2 relative w-[80px] h-[40px] group overflow-hidden"
+              >
+                <button
+                  class="text-sm font-semibold focus-visible:outline left-4 text-nowrap absolute duration-300 group-hover:left-[200px]"
+                >
+                  History
+                </button>
+                <i
+                  class="fa-solid fa-forward -left-16 absolute duration-300 group-hover:left-8 group-hover:animate-wiggle-2"
+                ></i>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div
+          class="absolute overflow-clip duration-300 scroll-smooth w-[60%] md:flex hidden"
+          id="floater3"
+        >
+          <img src="assets/images/home.png" alt="" />
+        </div>
+      </div>
+    </section>
+    <section
+      id="pets"
+      class="bg-green-cream-500 min-h-full py-[80px] flex flex-col items-center"
+    >
+      <h1 class="font-[Oswald] text-8xl text-center">Pets' Library</h1>
+      <div
+        class="flex mt-5 mb-2 gap-2 items-center flex-wrap justify-center"
+        id="filter-buttons"
+      >
+        Filter:
+        <button
+          class="active border-2 border-brown-cream-1000 rounded-md p-2 hover:bg-cream bg-brown-cream-500 duration-200"
+          data-filter="all"
+        >
+          Show all
+        </button>
+        <button
+          class="border-2 border-brown-cream-1000 rounded-md p-2 hover:bg-cream duration-200"
+          data-filter="dogs"
+        >
+          Dogs
+        </button>
+        <button
+          class="border-2 border-brown-cream-1000 rounded-md p-2 hover:bg-cream duration-200"
+          data-filter="cats"
+        >
+          Cats
+        </button>
+        <button
+          class="border-2 border-brown-cream-1000 rounded-md p-2 hover:bg-cream duration-200"
+          data-filter="others"
+        >
+          Others
+        </button>
+      </div>
+      <div
+        class="flex flex-wrap gap-3 mt-4 justify-center duration-200"
+        id="filterable-cards"
+      >
+        <div
+          class="[perspective:800px] dogs card relative cursor-pointer [&>*]:[backface-visibility:hidden] [&>*]:hover:-mt-1 [&>*]:hover:drop-shadow-lg [&>*]:duration-300"
+        >
+          <div
+            class="[&>*]:pointer-events-none cardcontent bg-white rounded-md w-[300px] h-[400px] p-4 flex flex-col items-center"
+          >
+            <img
+              src="assets/images/dog.jpg"
+              alt=""
+              class="rounded-md h-[200px]"
+            />
+            <h1 class="text-3xl font-bold mt-4 text-center">HUSKY</h1>
+            <h1 class="text-sm font-normal text-center text-yellow-400">
+              Alaskan Malamute
+            </h1>
+            <div class="h-4"></div>
+            <div class="flex gap-3">
+              <div class="flex flex-col items-center gap-1 w-[70px]">
+                <div
+                  class="bg-yellow-200 rounded-md size-[50px] flex items-center justify-center"
+                >
+                  <i class="fa-solid fa-heart text-yellow-600 text-xl"></i>
+                </div>
+                <h1 class="font-semibold text-sm text-center">10 – 14 yrs</h1>
+              </div>
+              <div class="flex flex-col items-center gap-1 w-[70px]">
+                <div
+                  class="bg-yellow-200 rounded-md size-[50px] flex items-center justify-center"
+                >
+                  <i
+                    class="fa-solid fa-location-dot text-yellow-600 text-xl"
+                  ></i>
+                </div>
+                <h1 class="font-semibold text-sm text-center">Alaska</h1>
+              </div>
+              <div class="flex flex-col items-center gap-1 w-[70px]">
+                <div
+                  class="bg-yellow-200 rounded-md size-[50px] flex items-center justify-center"
+                >
+                  <i class="fa-solid fa-face-smile text-yellow-600 text-xl"></i>
+                </div>
+                <h1 class="font-semibold text-sm text-center">Loyal</h1>
+              </div>
+            </div>
+          </div>
+          <div
+            class="backcardcontent bg-white rounded-md absolute w-[300px] h-[400px] top-0 left-0 [transform:rotateY(-180deg)] flex items-center overflow-clip [&>*]:pointer-events-none"
+          >
+            <h1 class="text-center m-6">
+              The Alaskan Malamute is a large breed of dog that was originally
+              bred for its strength and endurance, to haul heavy freight as a
+              sled dog, and as a hound. It is similar to other arctic breeds
+              such as the husky, the spitz, the Greenland Dog, Canadian Eskimo
+              Dog, the Siberian Husky, and the Samoyed.
+            </h1>
+            <i
+              class="fa-solid fa-bone absolute -right-4 -bottom-8 text-9xl opacity-20 -rotate-12"
+            ></i>
+            <i
+              class="fa-solid fa-paw absolute -left-4 -top-10 text-9xl opacity-20 -rotate-12"
+            ></i>
+          </div>
+        </div>
+        <div
+          class="[perspective:800px] cats card relative cursor-pointer [&>*]:[backface-visibility:hidden] [&>*]:hover:-mt-1 [&>*]:hover:drop-shadow-lg [&>*]:duration-300"
+        >
+          <div
+            class="[&>*]:pointer-events-none cardcontent bg-white rounded-md w-[300px] h-[400px] p-4 flex flex-col items-center"
+          >
+            <img
+              src="assets/images/cat.jpg"
+              alt=""
+              class="rounded-md h-[200px]"
+            />
+            <h1 class="text-3xl font-bold mt-4 text-center">SHORTHAIR</h1>
+            <h1 class="text-sm font-normal text-center text-yellow-400">
+              European Shorthair
+            </h1>
+            <div class="h-4"></div>
+            <div class="flex gap-3">
+              <div class="flex flex-col items-center gap-1 w-[70px]">
+                <div
+                  class="bg-yellow-200 rounded-md size-[50px] flex items-center justify-center"
+                >
+                  <i class="fa-solid fa-heart text-yellow-600 text-xl"></i>
+                </div>
+                <h1 class="font-semibold text-sm text-center">15 – 20 yrs</h1>
+              </div>
+              <div class="flex flex-col items-center gap-1 w-[70px]">
+                <div
+                  class="bg-yellow-200 rounded-md size-[50px] flex items-center justify-center"
+                >
+                  <i
+                    class="fa-solid fa-location-dot text-yellow-600 text-xl"
+                  ></i>
+                </div>
+                <h1 class="font-semibold text-sm text-center">Europe</h1>
+              </div>
+              <div class="flex flex-col items-center gap-1 w-[70px]">
+                <div
+                  class="bg-yellow-200 rounded-md size-[50px] flex items-center justify-center"
+                >
+                  <i class="fa-solid fa-face-smile text-yellow-600 text-xl"></i>
+                </div>
+                <h1 class="font-semibold text-sm text-center">Adaptive</h1>
+              </div>
+            </div>
+          </div>
+          <div
+            class="backcardcontent bg-white rounded-md absolute w-[300px] h-[400px] top-0 left-0 [transform:rotateY(-180deg)] flex items-center overflow-clip [&>*]:pointer-events-none"
+          >
+            <h1 class="text-center m-6">
+              Although its wide range of colors and patterns make this breed
+              stand out from most others, the European Shorthair cat is commonly
+              considered to be in the average or medium category of height and
+              weight, although adult males can get large.
+            </h1>
+            <i
+              class="fa-solid fa-fish-fins absolute -right-4 -bottom-8 text-9xl opacity-20 -rotate-12"
+            ></i>
+            <i
+              class="fa-solid fa-paw absolute -left-4 -top-10 text-9xl opacity-20 -rotate-12"
+            ></i>
+          </div>
+        </div>
+        <div
+          class="[perspective:800px] others card relative cursor-pointer [&>*]:[backface-visibility:hidden] [&>*]:hover:-mt-1 [&>*]:hover:drop-shadow-lg [&>*]:duration-300"
+        >
+          <div
+            class="[&>*]:pointer-events-none cardcontent bg-white rounded-md w-[300px] h-[400px] p-4 flex flex-col items-center"
+          >
+            <img
+              src="assets/images/rabbit.jpeg"
+              alt=""
+              class="rounded-md h-[200px]"
+            />
+            <h1 class="text-3xl font-bold mt-4 text-center">LIONHEAD</h1>
+            <h1 class="text-sm font-normal text-center text-yellow-400">
+              Lionhead rabbit
+            </h1>
+            <div class="h-4"></div>
+            <div class="flex gap-3">
+              <div class="flex flex-col items-center gap-1 w-[70px]">
+                <div
+                  class="bg-yellow-200 rounded-md size-[50px] flex items-center justify-center"
+                >
+                  <i class="fa-solid fa-heart text-yellow-600 text-xl"></i>
+                </div>
+                <h1 class="font-semibold text-sm text-center">7 – 10 yrs</h1>
+              </div>
+              <div class="flex flex-col items-center gap-1 w-[70px]">
+                <div
+                  class="bg-yellow-200 rounded-md size-[50px] flex items-center justify-center"
+                >
+                  <i
+                    class="fa-solid fa-location-dot text-yellow-600 text-xl"
+                  ></i>
+                </div>
+                <h1 class="font-semibold text-sm text-center">Belgium</h1>
+              </div>
+              <div class="flex flex-col items-center gap-1 w-[70px]">
+                <div
+                  class="bg-yellow-200 rounded-md size-[50px] flex items-center justify-center"
+                >
+                  <i class="fa-solid fa-face-smile text-yellow-600 text-xl"></i>
+                </div>
+                <h1 class="font-semibold text-sm text-center">Energetic</h1>
+              </div>
+            </div>
+          </div>
+          <div
+            class="backcardcontent bg-white rounded-md absolute w-[300px] h-[400px] top-0 left-0 [transform:rotateY(-180deg)] flex items-center overflow-clip [&>*]:pointer-events-none"
+          >
+            <h1 class="text-center m-6">
+              The lionhead rabbit is a petite breed with a distinctive fluffy
+              wool mane similar to that of a male lion. Their body is compact,
+              but their erect ears are rather large at around 2 to 3 inches
+              long. This type of rabbit originates in Belgium and is believed to
+              be a cross between a Swiss Fox and a Netherland dwarf rabbit. They
+              require daily interaction and a moderate amount of maintenance.
+              They need a varied diet and housing that gives them room to
+              exercise.
+            </h1>
+            <i
+              class="fa-solid fa-carrot absolute -right-4 -bottom-6 text-9xl opacity-20"
+            ></i>
+            <i
+              class="fa-solid fa-paw absolute -left-4 -top-10 text-9xl opacity-20 -rotate-12"
+            ></i>
+          </div>
+        </div>
+        <div
+          class="[perspective:800px] cats card relative cursor-pointer [&>*]:[backface-visibility:hidden] [&>*]:hover:-mt-1 [&>*]:hover:drop-shadow-lg [&>*]:duration-300"
+        >
+          <div
+            class="[&>*]:pointer-events-none cardcontent bg-white rounded-md w-[300px] h-[400px] p-4 flex flex-col items-center"
+          >
+            <img
+              src="assets/images/cat2.jpg"
+              alt=""
+              class="rounded-md h-[200px]"
+            />
+            <h1 class="text-3xl font-bold mt-4 text-center">BENGAL</h1>
+            <h1 class="text-sm font-normal text-center text-yellow-400">
+              Bengal cat
+            </h1>
+            <div class="h-4"></div>
+            <div class="flex gap-3">
+              <div class="flex flex-col items-center gap-1 w-[70px]">
+                <div
+                  class="bg-yellow-200 rounded-md size-[50px] flex items-center justify-center"
+                >
+                  <i class="fa-solid fa-heart text-yellow-600 text-xl"></i>
+                </div>
+                <h1 class="font-semibold text-sm text-center">10 – 16 yrs</h1>
+              </div>
+              <div class="flex flex-col items-center gap-1 w-[70px]">
+                <div
+                  class="bg-yellow-200 rounded-md size-[50px] flex items-center justify-center"
+                >
+                  <i
+                    class="fa-solid fa-location-dot text-yellow-600 text-xl"
+                  ></i>
+                </div>
+                <h1 class="font-semibold text-sm text-center">US</h1>
+              </div>
+              <div class="flex flex-col items-center gap-1 w-[70px]">
+                <div
+                  class="bg-yellow-200 rounded-md size-[50px] flex items-center justify-center"
+                >
+                  <i class="fa-solid fa-face-smile text-yellow-600 text-xl"></i>
+                </div>
+                <h1 class="font-semibold text-sm text-center">Playful</h1>
+              </div>
+            </div>
+          </div>
+          <div
+            class="backcardcontent bg-white rounded-md absolute w-[300px] h-[400px] top-0 left-0 [transform:rotateY(-180deg)] flex items-center overflow-clip [&>*]:pointer-events-none"
+          >
+            <h1 class="text-center m-6">
+              The Bengal is a sleek, muscular cat with a wild appearance,
+              enhanced by the bold marbling and spotting on their thick,
+              luxurious coat. Despite their striking appearance, physically
+              there is nothing extreme about their build or structure, as this
+              is a well-balanced cat without any exaggerated features, smallish
+              ears, wedge shaped head, neat paws and athletic outline.
+            </h1>
+            <i
+              class="fa-solid fa-fish-fins absolute -right-4 -bottom-8 text-9xl opacity-20 -rotate-12"
+            ></i>
+            <i
+              class="fa-solid fa-paw absolute -left-4 -top-10 text-9xl opacity-20 -rotate-12"
+            ></i>
+          </div>
+        </div>
+        <div
+          class="[perspective:800px] others card relative cursor-pointer [&>*]:[backface-visibility:hidden] [&>*]:hover:-mt-1 [&>*]:hover:drop-shadow-lg [&>*]:duration-300"
+        >
+          <div
+            class="[&>*]:pointer-events-none cardcontent bg-white rounded-md w-[300px] h-[400px] p-4 flex flex-col items-center"
+          >
+            <img
+              src="assets/images/hamster.avif"
+              alt=""
+              class="rounded-md h-[200px]"
+            />
+            <h1 class="text-3xl font-bold mt-4 text-center">HAMSTER</h1>
+            <h1 class="text-sm font-normal text-center text-yellow-400">
+              Syrian hamster
+            </h1>
+            <div class="h-4"></div>
+            <div class="flex gap-3">
+              <div class="flex flex-col items-center gap-1 w-[70px]">
+                <div
+                  class="bg-yellow-200 rounded-md size-[50px] flex items-center justify-center"
+                >
+                  <i class="fa-solid fa-heart text-yellow-600 text-xl"></i>
+                </div>
+                <h1 class="font-semibold text-sm text-center">2 – 3 yrs</h1>
+              </div>
+              <div class="flex flex-col items-center gap-1 w-[70px]">
+                <div
+                  class="bg-yellow-200 rounded-md size-[50px] flex items-center justify-center"
+                >
+                  <i
+                    class="fa-solid fa-location-dot text-yellow-600 text-xl"
+                  ></i>
+                </div>
+                <h1 class="font-semibold text-sm text-center">Syria</h1>
+              </div>
+              <div class="flex flex-col items-center gap-1 w-[70px]">
+                <div
+                  class="bg-yellow-200 rounded-md size-[50px] flex items-center justify-center"
+                >
+                  <i class="fa-solid fa-face-smile text-yellow-600 text-xl"></i>
+                </div>
+                <h1 class="font-semibold text-sm text-center">Friendly</h1>
+              </div>
+            </div>
+          </div>
+          <div
+            class="backcardcontent bg-white rounded-md absolute w-[300px] h-[400px] top-0 left-0 [transform:rotateY(-180deg)] flex items-center overflow-clip [&>*]:pointer-events-none"
+          >
+            <h1 class="text-center m-6">
+              The Syrian hamster, also known as the golden hamster, is among the
+              most popular choices for small pets. It's generally easy to tame,
+              fun to watch, and fairly low-maintenance, making it a good pet for
+              beginners. These hamsters come from arid regions of northern Syria
+              and southern Turkey.
+            </h1>
+            <i
+              class="fa-solid fa-bowl-food absolute -right-4 -bottom-6 text-9xl opacity-20 -rotate-12"
+            ></i>
+            <i
+              class="fa-solid fa-paw absolute -left-4 -top-10 text-9xl opacity-20 -rotate-12"
+            ></i>
+          </div>
+        </div>
+        <div
+          class="[perspective:800px] dogs card relative cursor-pointer [&>*]:[backface-visibility:hidden] [&>*]:hover:-mt-1 [&>*]:hover:drop-shadow-lg [&>*]:duration-300"
+        >
+          <div
+            class="[&>*]:pointer-events-none cardcontent bg-white rounded-md w-[300px] h-[400px] p-4 flex flex-col items-center"
+          >
+            <img
+              src="assets/images/dog2.jpg"
+              alt=""
+              class="rounded-md h-[200px]"
+            />
+            <h1 class="text-3xl font-bold mt-4 text-center">LABRADOR</h1>
+            <h1 class="text-sm font-normal text-center text-yellow-400">
+              Labrador Retriever
+            </h1>
+            <div class="h-4"></div>
+            <div class="flex gap-3">
+              <div class="flex flex-col items-center gap-1 w-[70px]">
+                <div
+                  class="bg-yellow-200 rounded-md size-[50px] flex items-center justify-center"
+                >
+                  <i class="fa-solid fa-heart text-yellow-600 text-xl"></i>
+                </div>
+                <h1 class="font-semibold text-sm text-center">10 – 12 yrs</h1>
+              </div>
+              <div class="flex flex-col items-center gap-1 w-[70px]">
+                <div
+                  class="bg-yellow-200 rounded-md size-[50px] flex items-center justify-center"
+                >
+                  <i
+                    class="fa-solid fa-location-dot text-yellow-600 text-xl"
+                  ></i>
+                </div>
+                <h1 class="font-semibold text-sm text-center">UK</h1>
+              </div>
+              <div class="flex flex-col items-center gap-1 w-[70px]">
+                <div
+                  class="bg-yellow-200 rounded-md size-[50px] flex items-center justify-center"
+                >
+                  <i class="fa-solid fa-face-smile text-yellow-600 text-xl"></i>
+                </div>
+                <h1 class="font-semibold text-sm text-center">Intelligent</h1>
+              </div>
+            </div>
+          </div>
+          <div
+            class="backcardcontent bg-white rounded-md absolute w-[300px] h-[400px] top-0 left-0 [transform:rotateY(-180deg)] flex items-center overflow-clip [&>*]:pointer-events-none"
+          >
+            <h1 class="text-center m-6">
+              The Labrador Retriever or simply Labrador is a British breed of
+              retriever gun dog. It was developed in the United Kingdom from St.
+              John's water dogs imported from the colony of Newfoundland, and
+              was named after the Labrador region of that colony.
+            </h1>
+            <i
+              class="fa-solid fa-bone absolute -right-4 -bottom-8 text-9xl opacity-20 -rotate-12"
+            ></i>
+            <i
+              class="fa-solid fa-paw absolute -left-4 -top-10 text-9xl opacity-20 -rotate-12"
+            ></i>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section
+      id="tipsntricks"
+      class="bg-green-cream-500 min-h-full py-[100px] flex flex-col items-center"
+    >
+      <h1 class="font-[Oswald] text-8xl text-center">Tips & Tricks</h1>
+      <div class="flex justify-center gap-6 mt-[50px] flex-wrap">
+        <div class="rounded-lg bg-cream w-[300px] flex flex-col items-center">
+          <div class="relative">
+            <img src="assets/images/field.png" alt="" class="rounded-t-lg" />
+            <i
+              class="fa-solid fa-cat absolute bottom-[30%] left-[45%] text-3xl cat"
+            ></i>
+            <img
+              src="assets/images/meow.png"
+              alt=""
+              class="w-[100px] absolute bottom-[30%] right-[15%] opacity-0 meow"
+            />
+            <h1
+              class="absolute left-1/2 -translate-x-1/2 drop-shadow-xl top-2 font-black text-2xl bg-cream p-2 px-4 rounded-md"
+            >
+              CATS
+            </h1>
+            <h1
+              class="cattips absolute left-1/2 -translate-x-1/2 opacity-0 duration-200 drop-shadow-xl bottom-2 font-bold text-lg bg-cream p-2 rounded-md border-4 whitespace-nowrap"
+            >
+              Brush your cat every day
+            </h1>
+            <h1
+              class="cattips absolute left-1/2 -translate-x-1/2 opacity-0 duration-200 drop-shadow-xl bottom-2 font-bold text-lg bg-cream p-2 rounded-md border-4 whitespace-nowrap"
+            >
+              Pay attention to their thirst
+            </h1>
+            <h1
+              class="cattips absolute left-1/2 -translate-x-1/2 opacity-0 duration-200 drop-shadow-xl bottom-2 font-bold text-lg bg-cream p-2 rounded-md border-4 whitespace-nowrap"
+            >
+              Spay or neuter your cat
+            </h1>
+            <h1
+              class="cattips absolute left-1/2 -translate-x-1/2 opacity-0 duration-200 drop-shadow-xl bottom-2 font-bold text-lg bg-cream p-2 rounded-md border-4 whitespace-nowrap"
+            >
+              Choose cat-friendly vets
+            </h1>
+            <h1
+              class="cattips absolute left-1/2 -translate-x-1/2 opacity-0 duration-200 drop-shadow-xl bottom-2 font-bold text-lg bg-cream p-2 rounded-md border-4 whitespace-nowrap"
+            >
+              Travel safely with your cat
+            </h1>
+            <h1
+              class="cattips absolute left-1/2 -translate-x-1/2 opacity-0 duration-200 drop-shadow-xl bottom-2 font-bold text-lg bg-cream p-2 rounded-md border-4 whitespace-nowrap"
+            >
+              Let Them Show Off!
+            </h1>
+          </div>
+          <div class="flex flex-wrap gap-8 p-10 items-center justify-center">
+            <div
+              class="catbuttons bg-yellow-300 rounded-md size-[50px] flex items-center justify-center duration-100 hover:scale-125 hover:bg-yellow-200"
+              onmouseover="meow()"
+              onmouseout="meow()"
+            >
+              <i
+                class="fa-solid fa-brush text-yellow-600 text-xl pointer-events-none"
+              ></i>
+            </div>
+            <div
+              onmouseover="animatecat('animate-spin')"
+              onmouseout="animatecat('animate-spin')"
+              class="catbuttons bg-yellow-300 rounded-md size-[50px] flex items-center justify-center duration-100 hover:scale-125 hover:bg-yellow-200"
+            >
+              <i
+                class="fa-solid fa-glass-water text-yellow-600 text-xl pointer-events-none"
+              ></i>
+            </div>
+            <div
+              onmouseover="animatecat('animate-flicker')"
+              onmouseout="animatecat('animate-flicker')"
+              class="catbuttons bg-yellow-300 rounded-md size-[50px] flex items-center justify-center duration-100 hover:scale-125 hover:bg-yellow-200"
+            >
+              <i
+                class="fa-solid fa-venus-mars text-yellow-600 text-xl pointer-events-none"
+              ></i>
+            </div>
+            <div
+              onmouseover="animatecat('animate-infinite-scroll')"
+              onmouseout="animatecat('animate-infinite-scroll')"
+              class="catbuttons bg-yellow-300 rounded-md size-[50px] flex items-center justify-center duration-100 hover:scale-125 hover:bg-yellow-200"
+            >
+              <i
+                class="fa-solid fa-stethoscope text-yellow-600 text-xl pointer-events-none"
+              ></i>
+            </div>
+            <div
+              onmouseover="animatecat('animate-appear')"
+              onmouseout="animatecat('animate-appear')"
+              class="catbuttons bg-yellow-300 rounded-md size-[50px] flex items-center justify-center duration-100 hover:scale-125 hover:bg-yellow-200"
+            >
+              <i
+                class="fa-solid fa-plane text-yellow-600 text-xl pointer-events-none"
+              ></i>
+            </div>
+            <div
+              onmouseover="animatecat('animate-wiggle-2')"
+              onmouseout="animatecat('animate-wiggle-2')"
+              class="catbuttons bg-yellow-300 rounded-md size-[50px] flex items-center justify-center duration-100 hover:scale-125 hover:bg-yellow-200"
+            >
+              <i
+                class="fa-solid fa-star text-yellow-600 text-xl pointer-events-none"
+              ></i>
+            </div>
+          </div>
+        </div>
+        <div class="rounded-lg bg-cream w-[300px] flex flex-col items-center">
+          <div class="relative">
+            <img src="assets/images/field.png" alt="" class="rounded-t-lg" />
+            <i
+              class="fa-solid fa-dog absolute bottom-[30%] left-[45%] text-3xl dog"
+            ></i>
+            <img
+              src="assets/images/woof.png"
+              alt=""
+              class="w-[100px] absolute bottom-[30%] left-[20%] opacity-0 woof"
+            />
+            <h1
+              class="absolute left-1/2 -translate-x-1/2 drop-shadow-xl top-2 font-black text-2xl bg-cream p-2 px-4 rounded-md"
+            >
+              DOGS
+            </h1>
+            <h1
+              class="dogtips absolute left-1/2 -translate-x-1/2 opacity-0 duration-200 drop-shadow-xl bottom-2 font-bold text-lg bg-cream p-2 rounded-md border-4 whitespace-nowrap"
+            >
+              Brush your dog’s teeth
+            </h1>
+            <h1
+              class="dogtips absolute left-1/2 -translate-x-1/2 opacity-0 duration-200 drop-shadow-xl bottom-2 font-bold text-lg bg-cream p-2 rounded-md border-4 whitespace-nowrap"
+            >
+              Exercise your dog every day
+            </h1>
+            <h1
+              class="dogtips absolute left-1/2 -translate-x-1/2 opacity-0 duration-200 drop-shadow-xl bottom-2 font-bold text-lg bg-cream p-2 rounded-md border-4 whitespace-nowrap"
+            >
+              Regularly groom your dog
+            </h1>
+            <h1
+              class="dogtips absolute left-1/2 -translate-x-1/2 opacity-0 duration-200 drop-shadow-xl bottom-2 font-bold text-lg bg-cream p-2 rounded-md border-4 whitespace-nowrap"
+            >
+              Maintain proper vaccinations
+            </h1>
+            <h1
+              class="dogtips absolute left-1/2 -translate-x-1/2 opacity-0 duration-200 drop-shadow-xl bottom-2 font-bold text-lg bg-cream p-2 rounded-md border-4 whitespace-nowrap"
+            >
+              Register your pup
+            </h1>
+            <h1
+              class="dogtips absolute left-1/2 -translate-x-1/2 opacity-0 duration-200 drop-shadow-xl bottom-2 font-bold text-lg bg-cream p-2 rounded-md border-4 whitespace-nowrap"
+            >
+              Disinfect your dog’s stuff
+            </h1>
+          </div>
+          <div class="flex flex-wrap gap-8 p-10 items-center justify-center">
+            <div
+              class="dogbuttons bg-yellow-300 rounded-md size-[50px] flex items-center justify-center duration-100 hover:scale-125 hover:bg-yellow-200"
+              onmouseover="woof()"
+              onmouseout="woof()"
+            >
+              <i
+                class="fa-solid fa-tooth text-yellow-600 text-xl pointer-events-none"
+              ></i>
+            </div>
+            <div
+              onmouseover="animatedog('animate-spin')"
+              onmouseout="animatedog('animate-spin')"
+              class="dogbuttons bg-yellow-300 rounded-md size-[50px] flex items-center justify-center duration-100 hover:scale-125 hover:bg-yellow-200"
+            >
+              <i
+                class="fa-solid fa-dumbbell text-yellow-600 text-xl pointer-events-none"
+              ></i>
+            </div>
+            <div
+              onmouseover="animatedog('animate-flicker')"
+              onmouseout="animatedog('animate-flicker')"
+              class="dogbuttons bg-yellow-300 rounded-md size-[50px] flex items-center justify-center duration-100 hover:scale-125 hover:bg-yellow-200"
+            >
+              <i
+                class="fa-solid fa-shower text-yellow-600 text-xl pointer-events-none"
+              ></i>
+            </div>
+            <div
+              onmouseover="animatedog('animate-infinite-scroll')"
+              onmouseout="animatedog('animate-infinite-scroll')"
+              class="dogbuttons bg-yellow-300 rounded-md size-[50px] flex items-center justify-center duration-100 hover:scale-125 hover:bg-yellow-200"
+            >
+              <i
+                class="fa-solid fa-syringe text-yellow-600 text-xl pointer-events-none"
+              ></i>
+            </div>
+            <div
+              onmouseover="animatedog('animate-appear')"
+              onmouseout="animatedog('animate-appear')"
+              class="dogbuttons bg-yellow-300 rounded-md size-[50px] flex items-center justify-center duration-100 hover:scale-125 hover:bg-yellow-200"
+            >
+              <i
+                class="fa-solid fa-pen text-yellow-600 text-xl pointer-events-none"
+              ></i>
+            </div>
+            <div
+              onmouseover="animatedog('animate-wiggle-2')"
+              onmouseout="animatedog('animate-wiggle-2')"
+              class="dogbuttons bg-yellow-300 rounded-md size-[50px] flex items-center justify-center duration-100 hover:scale-125 hover:bg-yellow-200"
+            >
+              <i
+                class="fa-solid fa-shield-virus text-yellow-600 text-xl pointer-events-none"
+              ></i>
+            </div>
+          </div>
+        </div>
+        <div class="rounded-lg bg-cream w-[300px] flex flex-col items-center">
+          <div class="relative">
+            <img src="assets/images/field.png" alt="" class="rounded-t-lg" />
+            <h1
+              class="absolute left-1/2 -translate-x-1/2 drop-shadow-xl top-2 font-black text-2xl bg-cream p-2 px-4 rounded-md"
+            >
+              ???
+            </h1>
+          </div>
+          <div
+            class="flex flex-wrap gap-8 p-10 items-center justify-center text-3xl font-semibold"
+          >
+            Coming soon...
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="hidden [transform:rotateY(180deg)] animate-woof"></div>
+    <section
+      id="history"
+      class="min-h-full relative duration-1000 overflow-x-clip"
+    >
+      <div class="w-full absolute top-0 object-cover">
+        <img src="assets/images/wave.png" alt="" class="object-cover h-full" />
+      </div>
+      <div class="w-full absolute bottom-0 object-cover rotate-180">
+        <img src="assets/images/wave.png" alt="" class="object-cover h-full" />
+      </div>
+      <div
+        class="flex items-center justify-center p-4 border-8 border-yellow-800 bg-brown-cream-1000 rotate-3 drop-shadow-lg gap-4 absolute -top-8 left-1/2 -translate-x-1/2"
+      >
+        <img src="assets/images/nut.png" alt="" class="w-8 drop-shadow-md" />
+        <h1 class="font-[Oswald] lg:text-8xl text-5xl text-cream lg:mb-4 mb-2">
+          History
+        </h1>
+        <img src="assets/images/nut.png" alt="" class="w-8 drop-shadow-md" />
+      </div>
+      <div
+        class="flex absolute md:bottom-[150px] bottom-[100px] left-1/2 -translate-x-1/2 gap-[50px] z-10"
+      >
+        <div
+          class="size-[80px] rounded-full bg-brown-cream-1000 hover:bg-brown-cream-800 flex items-center justify-center duration-200"
+          id="prev"
+        >
+          <i class="fa-solid fa-angle-left text-white text-3xl"></i>
+        </div>
+
+        <div
+          id="next"
+          class="size-[80px] rounded-full bg-brown-cream-1000 hover:bg-brown-cream-800 flex items-center justify-center duration-200"
+        >
+          <i class="fa-solid fa-angle-right text-white text-3xl"></i>
+        </div>
+      </div>
+      <div
+        class="overflow-x-clip overflow-y-hidden w-[100vw] py-[200px] scrollbar-hide historyscroll scroll-smooth"
+      >
+        <div
+          class="flex flex-row items-center w-[8000px] [&>*]:duration-700"
+          id="historyimg"
+        >
+          <div class="lg:w-[10vw] sm:w-[5vw] w-[2vw]"></div>
+          <div
+            class="historycard relative rounded-lg bg-cream flex h-[500px] lg:w-[800px] sm:w-[550px] xs:w-[400px] w-[300px] lg:flex-row flex-col-reverse"
+          >
+            <div class="lg:w-[40%] flex flex-col items-center gap-4 p-4">
+              <h1
+                class="text-3xl border-brown-cream-1000 border-4 bg-cream p-4 rounded-md text-center font-bold"
+              >
+                PREHISTORIC COMMUNITIES
+              </h1>
+              <p>
+                From the earliest days of domestication, dogs would have had
+                practical uses. They were kept because they could perform tasks
+                such as hunting, guarding, and herding. Although domesticated
+                dogs were probably treated with respect in primitive societies,
+                there is evidence that at least some were also considered
+                companions as early as 12,000 years ago.
+              </p>
+            </div>
+
+            <img
+              src="assets/images/prehistoric.jpg"
+              alt=""
+              class="lg:rounded-r-md rounded-t-md object-cover lg:w-[60%]"
+            />
+          </div>
+          <div
+            class="historycard relative rounded-lg bg-cream flex h-[500px] lg:w-[800px] sm:w-[550px] xs:w-[400px] w-[300px] lg:flex-row flex-col-reverse"
+          >
+            <div class="lg:w-[40%] flex flex-col items-center gap-4 p-4">
+              <h1
+                class="text-3xl border-brown-cream-1000 border-4 bg-cream p-4 rounded-md text-center font-bold"
+              >
+                ANCIENT CIVILIZATION
+              </h1>
+              <p>
+                Working dogs would have been increasingly valued in this
+                setting, but at about this time the cat also became loosely
+                associated with humans. Houses, barns, and grain stores provided
+                a new environmental niche that was rapidly exploited by mice and
+                other small mammals, the favored prey of small wild felids. Cats
+                that followed these rodents into human settlements would have
+                been tolerated—and possibly encouraged—because of their
+                usefulness in getting rid of these troublesome pests.
+              </p>
+            </div>
+
+            <img
+              src="assets/images/ancient-civilization.webp"
+              alt=""
+              class="lg:rounded-r-md rounded-t-md object-cover lg:w-[60%]"
+            />
+          </div>
+          <div
+            class="historycard relative rounded-lg bg-cream flex h-[500px] lg:w-[800px] sm:w-[550px] xs:w-[400px] w-[300px] lg:flex-row flex-col-reverse"
+          >
+            <div class="lg:w-[40%] flex flex-col items-center gap-4 p-4">
+              <h1
+                class="text-3xl border-brown-cream-1000 border-4 bg-cream p-4 rounded-md text-center font-bold"
+              >
+                MIDDLE AGES
+              </h1>
+              <p>
+                In medieval Europe, from the 13th–15th centuries AD, pet keeping
+                was popular among the aristocracy and some senior clergy. Lap
+                dogs were fashionable among the noble ladies, whereas male
+                nobility were more inclined to lavish their attention on more
+                'useful' animals, such as hunting hounds and falcons. During
+                this period, hunting, or 'venery,' was of great importance to
+                the aristocracy as a symbol of power and status. Dog breeds
+                spread throughout Europe as different types of hound were
+                developed for chasing different quarry.
+              </p>
+            </div>
+
+            <img
+              src="assets/images/middle-age.avif"
+              alt=""
+              class="lg:rounded-r-md rounded-t-md object-cover lg:w-[60%]"
+            />
+          </div>
+          <div
+            class="historycard relative rounded-lg bg-cream flex h-[500px] lg:w-[800px] sm:w-[550px] xs:w-[400px] w-[300px] lg:flex-row flex-col-reverse"
+          >
+            <div class="lg:w-[40%] flex flex-col items-center gap-4 p-4">
+              <h1
+                class="text-3xl border-brown-cream-1000 border-4 bg-cream p-4 rounded-md text-center font-bold"
+              >
+                MODERN SOCIETY
+              </h1>
+              <p>
+                In present-day societies, dogs have a number of functional
+                roles, from ornamental to status symbol, as helpers, and as
+                companions. Dogs can also act as a channel for personal
+                expression because people express their personality in the breed
+                they own. For example, rare breeds are often used as indicators
+                of status. In recent years, there's been a growing awareness of
+                the very positive effects these relationships can have on human
+                health and psychological well-being, and a recognition of the
+                therapeutic value of companion animals.
+              </p>
+            </div>
+
+            <img
+              src="assets/images/pets.avif"
+              alt=""
+              class="lg:rounded-r-md rounded-t-md object-cover lg:w-[60%]"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    <section
+      id="contactus"
+      class="bg-green-cream-500 min-h-full py-[80px] flex items-center justify-center relative"
+    >
+      <div
+        class="h-[60rem] flex md:gap-12 gap-4 overflow-hidden w-full justify-center"
+      >
+        <img
+          src="assets/images/cat.png"
+          alt=""
+          class="rounded-3xl w-[800px] object-cover"
+        />
+        <div></div>
+        <img
+          src="assets/images/sheepdog.jpg"
+          alt=""
+          class="rounded-3xl w-[800px] object-cover"
+        />
+      </div>
+      <form
+        class="grid-cols-8 md:px-12 px-6 m-4 flex absolute items-end justify-center flex-col bg-cream rounded-3xl py-10"
+      >
+        <div class="space-y-12 flex flex-col items-center grid-cols-8">
+          <div class="pb-12 grid-cols-8">
+            <h1
+              class="md:text-5xl text-3xl font-semibold leading-7 text-center"
+              data-aos="fade-right"
+              data-aos-delay="100"
+            >
+              Contact Us
+            </h1>
+            <p
+              class="mt-5 text-sm leading-6 text-center"
+              data-aos="fade-left"
+              data-aos-delay="200"
+            >
+              Feel free to leave a comment regarding the website too!
+            </p>
+
+            <div
+              class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-12"
+              data-aos="zoom-in"
+              data-aos-delay="300"
+            >
+              <div class="sm:col-span-6">
+                <label
+                  for="first-name"
+                  class="block text-sm font-medium leading-6"
+                  >First name</label
+                >
+                <div class="mt-2">
+                  <input
+                    type="text"
+                    name="first-name"
+                    id="first-name"
+                    autocomplete="given-name"
+                    class="bg-transparent block w-full border-b-2 border-brown-cream-1000 py-1.5 ps-1.5 outline-none hover:drop-shadow-md duration-200 placeholder:text-gray-400 sm:text-sm sm:leading-6"
+                  />
+                </div>
+              </div>
+
+              <div class="sm:col-span-6">
+                <label
+                  for="last-name"
+                  class="block text-sm font-medium leading-6"
+                  >Last name</label
+                >
+                <div class="mt-2">
+                  <input
+                    type="text"
+                    name="last-name"
+                    id="last-name"
+                    autocomplete="family-name"
+                    class="bg-transparent block w-full border-b-2 border-brown-cream-1000 py-1.5 ps-1.5 outline-none hover:drop-shadow-md duration-200 placeholder:text-gray-400 sm:text-sm sm:leading-6"
+                  />
+                </div>
+              </div>
+
+              <div class="sm:col-span-full">
+                <label for="email" class="block text-sm font-medium leading-6"
+                  >Email address</label
+                >
+                <div class="mt-2">
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    autocomplete="email"
+                    class="block w-full bg-transparent border-b-2 border-brown-cream-1000 py-1.5 ps-1.5 outline-none hover:drop-shadow-md duration-200 placeholder:text-gray-400 sm:text-sm sm:leading-6"
+                  />
+                </div>
+              </div>
+              <div class="sm:col-span-full">
+                <label for="comment" class="block text-sm font-medium leading-6"
+                  >Comment</label
+                >
+                <div class="mt-2">
+                  <textarea
+                    id="comment"
+                    name="comment"
+                    type="comment"
+                    autocomplete="comment"
+                    class="bg-transparent block w-full border-2 border-brown-cream-1000 h-[150px] py-1.5 ps-1.5 outline-none hover:drop-shadow-md duration-200 sm:text-sm sm:leading-6"
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-end gap-x-6">
+          <div
+            class="cursor-pointer rounded-md bg-[#f9f295] hover:bg-[#f7ef8a] duration-300 flex items-center px-3 py-2 relative w-[130px] h-[40px] group overflow-hidden"
+          >
+            <button
+              type="submit"
+              class="text-sm font-semibold focus-visible:outline left-2 text-nowrap absolute duration-300 group-hover:left-[200px]"
+            >
+              Send Message
+            </button>
+            <i
+              class="fa-solid fa-paper-plane right-2 absolute duration-300 group-hover:-right-[185px]"
+            ></i>
+            <i
+              class="fa-solid fa-paper-plane -left-16 absolute duration-300 group-hover:left-14 group-hover:animate-wiggle-2"
+            ></i>
+          </div>
+        </div>
+      </form>
+    </section>
+
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <script
+      src="https://kit.fontawesome.com/7629b30e08.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="script.js"></script>
+  </body>
+
+  <footer
+    class="flex flex-col items-center justify-center py-5 bg-green-cream-500"
+  >
+    <hr class="w-[90%] border-t-2 border-brown-cream-1000" />
+    <small class="my-4 mt-8">&copy; PETZORE 2024 | All Rights Reserved</small>
+  </footer>
+</html>
